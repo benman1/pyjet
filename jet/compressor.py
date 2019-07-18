@@ -226,8 +226,8 @@ class JetBuilder(object):
         for node in ordered_nodes:
             if node.op not in mergeables:
                 continue
-            if len(graph.successors(node)) == 1:
-                successor = graph.successors(node)[0]
+            if len(tuple(graph.successors(node))) == 1:
+                successor = tuple(graph.successors(node))[0]
                 if successor.op in mergeables:
                     rhs = repr(self.Op(node)).split('=')[-1]
                     rhs_without_semicolon = rhs.strip(' ;')
